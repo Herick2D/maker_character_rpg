@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  db:
+    image: mongo
+    restart: always
+    ports:
+      - 27017:27017
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: password
+
+  api:
+    build: .
+    ports:
+      - 3000:3000
+    container_name: api
+    volumes:
+      - .:/app
+      - /app/node_modules
+    env_file:
+      - .env
+    depends_on:
+      - db

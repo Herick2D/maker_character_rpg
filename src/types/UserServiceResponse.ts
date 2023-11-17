@@ -1,4 +1,6 @@
+import { codes } from '../utils/mapHttpStatusCode';
+
 export interface UserServiceResponse {
-  status: string;
+  status: keyof typeof codes;
   data: Record<string, any>;
 }

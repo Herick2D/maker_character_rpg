@@ -1,4 +1,4 @@
-const codes = {
+export const codes = {
 	'SUCCESS': 200,
 	'BAD_REQUEST': 400,
 	'UNAUTHORIZED': 401,
@@ -8,4 +8,4 @@ const codes = {
 	'SERVICE_UNAVAILABLE': 503,
 };
 
-export const mapHttpStatusCode = (code: string) => codes[code as keyof typeof codes] || 500;
+export const mapHttpStatusCode = (code: keyof typeof codes) => codes[code] || 500;

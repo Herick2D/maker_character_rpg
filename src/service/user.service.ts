@@ -1,8 +1,8 @@
 import { UserServiceResponse } from '../types/UserServiceResponse';
 
-export const createUser = async (name, email, password): Promise<UserServiceResponse> => {
+export const createUser = async (_name: string, _email: string, _password: string): Promise<UserServiceResponse> => {
 	// TODO: Implement validation
 	// TODO: Implement Database Mongodb
   
-	return { status: '', data: { message: 'test' } };
+	return { status: 'SUCCESS', data: { message: 'test' } };
 };

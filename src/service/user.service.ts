@@ -1,5 +1,8 @@
-const createUser = async (name, email, password) => {
+import { UserServiceResponse } from '../types/UserServiceResponse';
+
+export const createUser = async (name, email, password): Promise<UserServiceResponse> => {
 	// TODO: Implement validation
-	const user = await User.create({ name, email, password });
+	// TODO: Implement Database Mongodb
   
+	return { status: '', data: { message: 'test' } };
 };

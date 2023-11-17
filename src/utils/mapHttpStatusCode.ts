@@ -6,6 +6,7 @@ export const codes = {
 	'NOT_FOUND': 404,
 	'INTERNAL_SERVER_ERROR': 500,
 	'SERVICE_UNAVAILABLE': 503,
+	'CONFLICT': 409,
 };
 
 export const mapHttpStatusCode = (code: keyof typeof codes) => codes[code] || 500;

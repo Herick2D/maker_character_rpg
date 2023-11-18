@@ -9,3 +9,10 @@ export const createUser = async (req: Request<object, object, CreateUserType>, r
 
 	return res.status(mapHttpStatusCode(serviceResponse.status)).json(serviceResponse.data);
 };
+
+export const deleteUser = async (req: Request, res: Response) => {
+	const serviceResponse = await userService.deleteUser(req.user?.id, req.token);
+	console.log(req.token);
+	
+	return res.status(mapHttpStatusCode(serviceResponse.status)).json(serviceResponse.data);
+};

@@ -10,7 +10,7 @@ export const jwtValidateMiddleware = async (req: Request, res: Response, next: N
 	}
 
 	const authorizationWithoutBearer = authorization.split(' ')[1] || authorization;
-	
+
 	const validateObj = validateToken(authorizationWithoutBearer);
 
 	if (validateObj.error) {

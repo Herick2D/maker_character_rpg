@@ -10,7 +10,7 @@ export const schemaValidator = <T>(schema: ZodType<T>, data: T) => {
 		if (error instanceof ZodError) {
 			errorArr = error.errors;
 		}
-    
+
 		return { error: true, errors: errorArr };
 	}
 };

@@ -7,20 +7,20 @@ import { generateToken } from '../utils/jwtUtils';
 
 export const createUser = async (name: string, email: string, password: string): Promise<UserServiceResponse> => {
 	const dataValidate = schemaValidator(createUserSchema, { name, email, password });
-	
+
 	if (dataValidate.error) {
 		return { status: 'BAD_REQUEST', data: { message: dataValidate.errors } };
 	}
 
 	const userAlreadyExist = await collections.users.findOne({ email });
-	
+
 	if (userAlreadyExist) {
 		return { status: 'CONFLICT', data: { message: 'User already exists' } };
 	}
-	
+
 	const dataValues = await collections.users.insertOne({ name, email, password });
 	const token = generateToken({ name, id: dataValues.insertedId });
-	
+
 	await collections.tokens.insertOne({ token, userId: dataValues.insertedId });
 
 	return { status: 'SUCCESS', data: { token } };
